@@ -17,13 +17,14 @@ contract challenge3 {
     }
     
     function lottery(uint256 n) payable public {
-        require(msg.value == 1 ether);
+        require(msg.value == 1 ether); //1 Ether Deposit required
         answer = uint256(keccak256(abi.encode(blockhash(block.number))));
         if (n == answer) {
             msg.sender.transfer(2 ether);
         } 
     }
 }
+
 
 //   ___                           __           
 //   / __\___  _ __  ___  ___ _ __ / _\_   _ ___ 
@@ -36,4 +37,4 @@ contract challenge3 {
 //   / /\ / | | |/ _` |/ _ \ '_ \ / __/ _ \      
 //  / /_//| | | | (_| |  __/ | | | (_|  __/      
 // /___,' |_|_|_|\__, |\___|_| |_|\___\___|      
-//               |___/         
+//               |___/                       

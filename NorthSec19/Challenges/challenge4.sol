@@ -14,7 +14,7 @@ contract challenge4 {
     event paid(address payee, uint amount); 
 
     constructor() public payable{
-        require(msg.value == 1 ether);
+        require(msg.value == 1 ether); 
         balances[msg.sender] = msg.value;
     }
     
@@ -32,14 +32,14 @@ contract challenge4 {
           if(success) {
             emit paid(msg.sender, _amount);
           }
-          balances[msg.sender] -= _amount;
+          balances[msg.sender] -= _amount; //decrease the balance
         }
     }
     
     function() external payable {}
     
-
 }
+
 
 
 //  ______     ______     __   __     ______     ______     __   __     ______     __  __     ______    

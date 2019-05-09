@@ -4,6 +4,8 @@
 
 pragma solidity ^0.5.4;
 
+// Say Hi
+
 contract helloWorld {
    
     string public name;
@@ -11,11 +13,21 @@ contract helloWorld {
     
     event Hi(string name);
     
+    constructor() public {
+        owner = msg.sender;
+    }
+    
     function sayHi(string memory _name) public {
+        //change the name if owner calls
         if (msg.sender == owner) {
             name = _name;
         } 
-        emit Hi(name);
+        emit Hi(_name);
+    }
+    
+    //fallback function.
+    function() external {
+        emit Hi("Hello World");
     }
 
 }
@@ -30,4 +42,4 @@ contract helloWorld {
 //   / / / / / / / __ `/ _ \/ __ \/ ___/ _ \           
 //  / /_/ / / / / /_/ /  __/ / / / /__/  __/           
 // /_____/_/_/_/\__, /\___/_/ /_/\___/\___/            
-//             /____/                           
+//             /____/                                  

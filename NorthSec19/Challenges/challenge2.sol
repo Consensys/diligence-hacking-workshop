@@ -12,19 +12,24 @@ contract challenge2 {
     address public owner;
     
     constructor(string memory secretPassword) public payable{
-        require(msg.value == 1 ether);
+        require(msg.value == 1 ether); //1 Ether Deposit required
         owner = msg.sender;
         password = keccak256(abi.encode(secretPassword));
     }
     
     function changePassword(string memory secretPassword) public payable{
-        require(msg.sender == owner);
-        require(msg.value == 1 ether);
+        require(msg.sender == owner); //OnlyOwner
+        require(msg.value == 1 ether); //1 Ether Deposit required
         password = keccak256(abi.encode(secretPassword));
     }
     
+    function passwordTest() public view returns (bytes32){
+        //TODO: remove this for production
+        return (password);
+    }
+    
     function guessPassword(string memory n) public payable {
-        require(msg.value == 1 ether);
+        require(msg.value == 1 ether); // 1 Ether Deposit required
 
         if (keccak256(abi.encode(n)) == password) {
             msg.sender.transfer(2 ether);
@@ -44,4 +49,4 @@ contract challenge2 {
 //  |    |  \|  |  | |  |/ ___\_/ __ \ /    \_/ ___\/ __ \              
 //  |    `   \  |  |_|  / /_/  >  ___/|   |  \  \__\  ___/              
 // /_______  /__|____/__\___  / \___  >___|  /\___  >___  >             
-//         \/          /_____/      \/     \/     \/    \/   
+//         \/          /_____/      \/     \/     \/    \/              
