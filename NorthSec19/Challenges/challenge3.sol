@@ -4,8 +4,8 @@
 
 pragma solidity ^0.5.4;
 
-
 // Lottery using block hash as source of randomness
+// Deployed on Ropsten: 0x70707c3163575fb0eba9f291f75ff0742cb18386
 
 
 contract challenge3 {
@@ -17,11 +17,11 @@ contract challenge3 {
     }
     
     function lottery(uint256 n) payable public {
-        require(msg.value == 1 ether); //1 Ether Deposit required
-        answer = uint256(keccak256(abi.encode(blockhash(block.number))));
+        require(msg.value > 0); //buy ticket
+        answer = uint256(keccak256(abi.encode(blockhash(block.number - 1))));
         if (n == answer) {
-            msg.sender.transfer(2 ether);
-        } 
+            msg.sender.transfer(1337);
+        }
     }
 }
 

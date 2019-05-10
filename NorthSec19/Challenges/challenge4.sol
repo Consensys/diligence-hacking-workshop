@@ -4,10 +4,12 @@
 
 pragma solidity ^0.5.4;
 
+// Steal money from charity (For educational purposes only)
+// Deployed on Ropsten: 0x315a3254ff66c387a87d1771ae4877b4782a1a7c
+
 
 contract challenge4 {
    
-   // Steal money from charity
    
     mapping(address => uint) public balances;
     
@@ -32,7 +34,7 @@ contract challenge4 {
           if(success) {
             emit paid(msg.sender, _amount);
           }
-          balances[msg.sender] -= _amount; //decrease the balance
+          balances[msg.sender] -= _amount; //deduct the balance
         }
     }
     

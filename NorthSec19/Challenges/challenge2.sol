@@ -5,35 +5,35 @@
 pragma solidity ^0.5.4;
 
 // Guess the password for the safe
+// Deployed on Ropsten: 0xC224beb93142607b91d21BBd4A67a34a50E26AAB
 
 contract challenge2 {
    
-    bytes32 private password;
+    bytes32 private hash;
     address public owner;
     
     constructor(string memory secretPassword) public payable{
         require(msg.value == 1 ether); //1 Ether Deposit required
         owner = msg.sender;
-        password = keccak256(abi.encode(secretPassword));
+        hash = keccak256(abi.encode(secretPassword));
     }
     
     function changePassword(string memory secretPassword) public payable{
         require(msg.sender == owner); //OnlyOwner
         require(msg.value == 1 ether); //1 Ether Deposit required
-        password = keccak256(abi.encode(secretPassword));
+        hash = keccak256(abi.encode(secretPassword));
     }
     
     function passwordTest() public view returns (bytes32){
         //TODO: remove this for production
-        return (password);
+        return (hash);
     }
     
-    function guessPassword(string memory n) public payable {
-        require(msg.value == 1 ether); // 1 Ether Deposit required
-
-        if (keccak256(abi.encode(n)) == password) {
-            msg.sender.transfer(2 ether);
-        }
+    function guessPassword(string memory password) public payable {
+        
+        require(keccak256(abi.encode(password)) == hash);
+        msg.sender.transfer(1337);
+        
     }
 
 }
