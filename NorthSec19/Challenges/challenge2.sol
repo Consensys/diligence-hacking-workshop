@@ -24,11 +24,6 @@ contract challenge2 {
         hash = keccak256(abi.encode(secretPassword));
     }
     
-    function passwordTest() public view returns (bytes32){
-        //TODO: remove this for production
-        return (hash);
-    }
-    
     function guessPassword(string memory password) public payable {
         
         require(keccak256(abi.encode(password)) == hash);

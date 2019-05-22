@@ -17,13 +17,14 @@ contract challenge3 {
     }
     
     function lottery(uint256 n) payable public {
-        require(msg.value > 0); //buy ticket
+        require(msg.value > 0); //buy ticket, it should be more than 0 
         answer = uint256(keccak256(abi.encode(blockhash(block.number - 1))));
         if (n == answer) {
             msg.sender.transfer(1337);
         }
     }
 }
+
 
 
 //   ___                           __           
@@ -38,3 +39,4 @@ contract challenge3 {
 //  / /_//| | | | (_| |  __/ | | | (_|  __/      
 // /___,' |_|_|_|\__, |\___|_| |_|\___\___|      
 //               |___/                       
+
