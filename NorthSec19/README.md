@@ -33,3 +33,26 @@ Gist of challenges: https://gist.github.com/shayanb/19dace14c6730a57c8df8682eb3f
 
 ### Challenge 5
 [blank]
+
+
+-------------------
+
+## Proposals:
+
+* NorthSec 2019:
+```
+In this workshop, we will teach students how to write smart contracts in the Solidity programming language. Solidity is easy to learn, but hard to get right.
+
+The approach to training we’ll take in this session will be to provide a series of simple coding challenges, where participants are asked to write the code to implement a simple program, such as a coin toss, a transferable token (like a coin), or an auction. We’ll allow an appropriate amount of time for each step, and then provide a solution.
+
+Then the fun part! We will walk the participants through the steps to break their contracts.
+
+Classes of vulnerabilities we’ll explore include:
+
+Overflows Reentrancy attacks Forcible sends Front Running
+```
+
+* DevCon5:
+```
+Some of the most financially devastating hacks in recent years have happened on the blockchain. In this workshop, we will walk through a series of simple Solidity coding challenges and common mistakes, where participants are asked read code, understand and try to break them. Regarding each challenge, we will talk about the history of the hacks involving that family of bug. We will talk about the attacks and possible solutions. 
+```
